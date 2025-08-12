@@ -1,18 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Globe, Menu } from "lucide-react";
+import { MessageCircle, Menu } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Products", href: "#products" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: t('nav.home'), href: "#home" },
+    { name: t('nav.products'), href: "#products" },
+    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.contact'), href: "#contact" },
   ];
 
-  const whatsappNumber = "+919876543210"; // Replace with actual number
+  const whatsappNumber = "+919529390430";
   const whatsappMessage = "Hello! I'm interested in your export services.";
 
   return (
@@ -41,17 +44,14 @@ const Header = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
-              <Globe className="h-4 w-4" />
-              EN
-            </Button>
+            <LanguageSwitcher />
             <Button 
               variant="cta" 
               size="sm"
               onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank')}
             >
               <MessageCircle className="h-4 w-4" />
-              WhatsApp
+              {t('hero.whatsapp')}
             </Button>
           </div>
 
@@ -79,10 +79,7 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex items-center space-x-4 pt-4">
-                <Button variant="outline" size="sm">
-                  <Globe className="h-4 w-4" />
-                  EN
-                </Button>
+                <LanguageSwitcher />
                 <Button 
                   variant="cta" 
                   size="sm"
@@ -92,7 +89,7 @@ const Header = () => {
                   }}
                 >
                   <MessageCircle className="h-4 w-4" />
-                  WhatsApp
+                  {t('hero.whatsapp')}
                 </Button>
               </div>
             </nav>

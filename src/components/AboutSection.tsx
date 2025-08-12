@@ -1,7 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Shield, Globe, Award, Truck, Heart, CheckCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AboutSection = () => {
+  const { t } = useTranslation();
+  
   const features = [
     {
       icon: <Shield className="h-6 w-6" />,
@@ -41,18 +44,13 @@ const AboutSection = () => {
           {/* Content */}
           <div>
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-6">
-              About Groww Internationals
+              {t('about.title')}
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              We are a leading exporter of premium agricultural and food products, 
-              committed to delivering excellence in quality and service. Our expertise 
-              spans across diverse product categories, ensuring we meet the varied needs 
-              of our global clientele.
+              {t('about.subtitle')}
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              With years of experience in international trade, we have built strong 
-              relationships with suppliers and customers worldwide, maintaining the 
-              highest standards of quality, compliance, and customer satisfaction.
+              {t('about.mission')}
             </p>
 
             {/* Certifications */}
@@ -99,19 +97,19 @@ const AboutSection = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-3xl font-bold text-primary mb-2">15+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="text-sm text-muted-foreground">{t('about.experience')}</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-primary mb-2">25+</div>
+              <div className="text-sm text-muted-foreground">{t('about.countries')}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-primary mb-2">50+</div>
-              <div className="text-sm text-muted-foreground">Countries Served</div>
+              <div className="text-sm text-muted-foreground">{t('about.products')}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary mb-2">1000+</div>
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-2">99%</div>
-              <div className="text-sm text-muted-foreground">Customer Satisfaction</div>
+              <div className="text-3xl font-bold text-primary mb-2">ISO</div>
+              <div className="text-sm text-muted-foreground">{t('about.certifications')}</div>
             </div>
           </div>
         </div>

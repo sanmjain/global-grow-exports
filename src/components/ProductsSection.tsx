@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import riceImage from "@/assets/rice-product.jpg";
 import coffeeImage from "@/assets/coffee-product.jpg";
 import spicesImage from "@/assets/spices-product.jpg";
@@ -9,6 +10,8 @@ import raisinsImage from "@/assets/raisins-product.jpg";
 import medicinesImage from "@/assets/medicines-product.jpg";
 
 const ProductsSection = () => {
+  const { t } = useTranslation();
+  
   const products = [
     {
       id: "rice",
@@ -59,11 +62,10 @@ const ProductsSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
-            Our Export Products
+            {t('products.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover our premium range of agricultural and food products, 
-            carefully selected and processed for international markets.
+            {t('products.subtitle')}
           </p>
         </div>
 
@@ -103,7 +105,7 @@ const ProductsSection = () => {
                   className="w-full group-hover:border-primary/40 group-hover:bg-primary/5"
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Get Quote
+                  {t('products.viewDetails')}
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
                 </Button>
               </div>

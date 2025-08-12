@@ -7,9 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { MessageCircle, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,7 +22,7 @@ const ContactSection = () => {
     message: ""
   });
 
-  const whatsappNumber = "+919876543210"; // Replace with actual number
+  const whatsappNumber = "+919529390430";
   
   const products = [
     "Basmati Rice",
@@ -70,11 +72,10 @@ Please provide more information about pricing and availability.`;
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
-            Get In Touch
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your export journey? Contact us for personalized quotes 
-            and expert consultation on our premium products.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -93,7 +94,7 @@ Please provide more information about pricing and availability.`;
                   </div>
                   <div>
                     <div className="text-sm font-medium text-foreground">Phone</div>
-                    <div className="text-sm text-muted-foreground">+91 98765 43210</div>
+                    <div className="text-sm text-muted-foreground">{t('contact.info.phone')}</div>
                   </div>
                 </div>
                 
@@ -103,7 +104,7 @@ Please provide more information about pricing and availability.`;
                   </div>
                   <div>
                     <div className="text-sm font-medium text-foreground">Email</div>
-                    <div className="text-sm text-muted-foreground">info@growwinternational.com</div>
+                    <div className="text-sm text-muted-foreground">{t('contact.info.email')}</div>
                   </div>
                 </div>
                 
@@ -114,8 +115,7 @@ Please provide more information about pricing and availability.`;
                   <div>
                     <div className="text-sm font-medium text-foreground">Address</div>
                     <div className="text-sm text-muted-foreground">
-                      Export House, Trade Center<br />
-                      Mumbai, Maharashtra, India
+                      {t('contact.info.address')}
                     </div>
                   </div>
                 </div>

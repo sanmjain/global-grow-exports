@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, FileText } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-agriculture.jpg";
 
 const Hero = () => {
-  const whatsappNumber = "+919876543210"; // Replace with actual number
+  const { t } = useTranslation();
+  const whatsappNumber = "+919529390430";
   const whatsappMessage = "Hello! I'm interested in your export services and would like to request a quote.";
 
   return (
@@ -22,13 +24,11 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight">
-            Exporting Quality Products
-            <span className="block text-secondary"> Worldwide</span>
+            {t('hero.title')}
           </h1>
           
           <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-            Premium Basmati Rice, Coffee, Ghee, Raisins, Spices, and Medicines. 
-            Your trusted partner in global agricultural exports since inception.
+            {t('hero.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -38,7 +38,7 @@ const Hero = () => {
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <FileText className="h-5 w-5" />
-              Request Quote
+              {t('hero.cta')}
               <ArrowRight className="h-5 w-5" />
             </Button>
             
@@ -48,7 +48,7 @@ const Hero = () => {
               onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank')}
             >
               <MessageCircle className="h-5 w-5" />
-              WhatsApp Us
+              {t('hero.whatsapp')}
             </Button>
           </div>
 

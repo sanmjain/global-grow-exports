@@ -1,13 +1,15 @@
 import { MessageCircle, Mail, Phone, MapPin, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Products", href: "#products" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: t('nav.home'), href: "#home" },
+    { name: t('nav.products'), href: "#products" },
+    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.contact'), href: "#contact" },
   ];
 
   const products = [
@@ -27,15 +29,14 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <h3 className="text-2xl font-display font-bold mb-4">
-              Groww Internationals
+              {t('footer.company')}
             </h3>
             <p className="text-primary-foreground/80 mb-6 leading-relaxed">
-              Your trusted partner in premium agricultural exports. 
-              Connecting global markets with quality Indian products.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://wa.me/+919876543210" 
+                href="https://wa.me/+919529390430" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-smooth"
@@ -49,7 +50,7 @@ const Footer = () => {
                 <Mail className="h-5 w-5" />
               </a>
               <a 
-                href="tel:+919876543210"
+                href="tel:+919529390430"
                 className="p-2 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-smooth"
               >
                 <Phone className="h-5 w-5" />
@@ -59,7 +60,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-display font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -76,7 +77,7 @@ const Footer = () => {
 
           {/* Products */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Our Products</h4>
+            <h4 className="font-display font-semibold mb-4">{t('footer.ourProducts')}</h4>
             <ul className="space-y-2">
               {products.map((product) => (
                 <li key={product}>
@@ -90,25 +91,24 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Contact Info</h4>
+            <h4 className="font-display font-semibold mb-4">{t('footer.contactInfo')}</h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 mt-1 text-primary-foreground/60" />
                 <div className="text-sm text-primary-foreground/80">
-                  Export House, Trade Center<br />
-                  Mumbai, Maharashtra, India
+                  {t('contact.info.address')}
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-foreground/60" />
                 <div className="text-sm text-primary-foreground/80">
-                  +91 98765 43210
+                  {t('contact.info.phone')}
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary-foreground/60" />
                 <div className="text-sm text-primary-foreground/80">
-                  info@growwinternational.com
+                  {t('contact.info.email')}
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -125,12 +125,12 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-primary-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-primary-foreground/60 mb-4 md:mb-0">
-              © {currentYear} Groww Internationals. All rights reserved.
+              {t('footer.copyright')}
             </div>
             <div className="flex space-x-6 text-sm text-primary-foreground/60">
-              <a href="#" className="hover:text-primary-foreground transition-smooth">Privacy Policy</a>
-              <a href="#" className="hover:text-primary-foreground transition-smooth">Terms of Service</a>
-              <a href="#" className="hover:text-primary-foreground transition-smooth">Export Terms</a>
+              <a href="#" className="hover:text-primary-foreground transition-smooth">{t('footer.privacy')}</a>
+              <a href="#" className="hover:text-primary-foreground transition-smooth">{t('footer.terms')}</a>
+              <a href="#" className="hover:text-primary-foreground transition-smooth">{t('footer.exportTerms')}</a>
             </div>
           </div>
         </div>
