@@ -8,7 +8,6 @@ import { MessageCircle, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -16,28 +15,31 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: "",
-    products: [] as string[],
-    quantity: ""
+    phone: "",
+    company: "",
+    product: "",
+    quantity: "",
+    message: ""
   });
 
   const whatsappNumber = "+919529390430";
   
-  const services = [
-    "Web Development",
-    "Mobile App Development",
-    "SaaS Development",
-    "UI/UX Design",
-    "DevOps & Cloud",
-    "Consulting",
-    "Maintenance & Support"
+  const products = [
+    "Basmati Rice",
+    "Non-Basmati Rice", 
+    "Coffee",
+    "Spices",
+    "Ghee",
+    "Raisins",
+    "Medicines",
+    "Multiple Products"
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the form data to your API
     toast({
-      title: "Message Sent!",
+      title: "Quote Request Sent!",
       description: "We'll get back to you within 24 hours.",
     });
     
@@ -45,20 +47,22 @@ const ContactSection = () => {
     setFormData({
       name: "",
       email: "",
-      message: "",
-      products: [],
-      quantity: ""
+      phone: "",
+      company: "",
+      product: "",
+      quantity: "",
+      message: ""
     });
   };
 
   const handleWhatsApp = () => {
-    const message = `Hello! I'm interested in your software development services.
+    const message = `Hello! I'm interested in your export services.
     
-Services: ${formData.products.length > 0 ? formData.products.join(', ') : 'Multiple services'}
-Budget: ${formData.quantity || 'Not specified'}
+Product: ${formData.product || 'Multiple products'}
+Company: ${formData.company || 'Not specified'}
 Name: ${formData.name || 'Not specified'}
 
-Please provide more information about your development process and pricing.`;
+Please provide more information about pricing and availability.`;
     
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -66,27 +70,21 @@ Please provide more information about your development process and pricing.`;
   return (
     <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
             {t('contact.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t('contact.subtitle')}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div className="space-y-6">
             <Card className="p-6 bg-gradient-card border-border/50">
               <h3 className="font-display font-semibold text-foreground mb-4">
-                {t('contact.info.address')}
+                Contact Information
               </h3>
               
               <div className="space-y-4">
@@ -159,13 +157,13 @@ Please provide more information about your development process and pricing.`;
           <div className="lg:col-span-2">
             <Card className="p-8 bg-gradient-card border-border/50">
               <h3 className="font-display font-semibold text-foreground mb-6 text-xl">
-                Start Your Project
+                Request a Quote
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="name">{t('contact.form.name')} *</Label>
+                    <Label htmlFor="name">Full Name *</Label>
                     <Input
                       id="name"
                       type="text"
@@ -176,7 +174,7 @@ Please provide more information about your development process and pricing.`;
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email">{t('contact.form.email')} *</Label>
+                    <Label htmlFor="email">Email Address *</Label>
                     <Input
                       id="email"
                       type="email"
@@ -190,46 +188,62 @@ Please provide more information about your development process and pricing.`;
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="services">{t('contact.form.products')}</Label>
-                    <div className="grid grid-cols-2 gap-2 mt-2">
-                      {services.map((service) => (
-                        <label key={service} className="flex items-center space-x-2 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={formData.products.includes(service)}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setFormData({...formData, products: [...formData.products, service]});
-                              } else {
-                                setFormData({...formData, products: formData.products.filter(p => p !== service)});
-                              }
-                            }}
-                            className="rounded border-gray-300"
-                          />
-                          <span className="text-sm text-muted-foreground">{service}</span>
-                        </label>
-                      ))}
-                    </div>
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      placeholder="+1 (555) 123-4567"
+                    />
                   </div>
                   <div>
-                    <Label htmlFor="quantity">{t('contact.form.quantity')}</Label>
+                    <Label htmlFor="company">Company Name</Label>
+                    <Input
+                      id="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      placeholder="Your company name"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="product">Product Interest *</Label>
+                    <Select value={formData.product} onValueChange={(value) => setFormData({...formData, product: value})}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a product" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {products.map((product) => (
+                          <SelectItem key={product} value={product}>
+                            {product}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label htmlFor="quantity">Estimated Quantity</Label>
                     <Input
                       id="quantity"
                       type="text"
                       value={formData.quantity}
                       onChange={(e) => setFormData({...formData, quantity: e.target.value})}
-                      placeholder="e.g., $5,000 - $20,000"
+                      placeholder="e.g., 100 MT, 50 containers"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="message">{t('contact.form.message')}</Label>
+                  <Label htmlFor="message">Message</Label>
                   <Textarea
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder="Tell us about your project requirements, timeline, and any specific features you need..."
+                    placeholder="Tell us about your requirements, destination country, preferred packaging, etc."
                     rows={4}
                   />
                 </div>
@@ -237,11 +251,11 @@ Please provide more information about your development process and pricing.`;
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button type="submit" variant="default" className="flex-1">
                     <Send className="h-4 w-4" />
-                    {t('contact.form.submit')}
+                    Send Quote Request
                   </Button>
                   <Button type="button" variant="cta" onClick={handleWhatsApp} className="flex-1">
                     <MessageCircle className="h-4 w-4" />
-                    WhatsApp
+                    WhatsApp Instead
                   </Button>
                 </div>
               </form>
