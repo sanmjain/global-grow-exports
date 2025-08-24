@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Menu } from "lucide-react";
+import { MessageCircle, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
@@ -10,13 +11,13 @@ const Header = () => {
 
   const navItems = [
     { name: t('nav.home'), href: "#home" },
-    { name: t('nav.products'), href: "#products" },
-    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.services'), href: "#services" },
+    { name: t('nav.projects'), href: "#projects" },
     { name: t('nav.contact'), href: "#contact" },
   ];
 
   const whatsappNumber = "+919529390430";
-  const whatsappMessage = "Hello! I'm interested in your export services.";
+  const whatsappMessage = "Hello! I'm interested in your software development services.";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
@@ -25,7 +26,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-display font-bold text-primary">
-              Groww Internationals
+              TechSolutions
             </h1>
           </div>
 
@@ -66,7 +67,12 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden py-4 border-t border-border"
+          >
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <a
@@ -78,22 +84,31 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="flex items-center space-x-4 pt-4">
+              <div className="flex items-center justify-between pt-4">
                 <LanguageSwitcher />
                 <Button 
-                  variant="cta" 
+                  variant="outline" 
                   size="sm"
-                  onClick={() => {
-                    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  <MessageCircle className="h-4 w-4" />
-                  {t('hero.whatsapp')}
+                  <X className="h-4 w-4" />
+                  Close
                 </Button>
               </div>
+              <Button 
+                variant="cta" 
+                size="sm"
+                className="w-full"
+                onClick={() => {
+                  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+                  setIsMenuOpen(false);
+                }}
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp
+              </Button>
             </nav>
-          </div>
+          </motion.div>
         )}
       </div>
     </header>

@@ -1,66 +1,75 @@
 {
   "nav": {
     "home": "Home",
-    "products": "Products",
-    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
-    "title": "Exporting Quality Products Worldwide",
-    "subtitle": "Premium Basmati Rice, Coffee, Ghee, Spices & Traditional Indian Products",
-    "cta": "Request a Quote",
-    "whatsapp": "WhatsApp Us"
+    "title": "Building Digital Excellence",
+    "subtitle": "Custom Software Solutions for Modern Businesses",
+    "cta": "Get Started",
+    "subtitle2": "Transform your ideas into powerful digital solutions"
   },
-  "products": {
-    "title": "Our Products",
-    "subtitle": "Premium quality agricultural and traditional products for global markets",
-    "viewDetails": "View Details",
-    "categories": {
-      "rice": "Premium Rice",
-      "coffee": "Coffee",
-      "spices": "Spices",
-      "ghee": "Pure Ghee",
-      "raisins": "Dry Fruits",
-      "medicines": "Traditional Medicines"
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive software solutions tailored to your needs",
+    "web": {
+      "title": "Web Development",
+      "description": "Modern, responsive websites and web applications built with cutting-edge technologies."
+    },
+    "app": {
+      "title": "App Development",
+      "description": "Native and cross-platform mobile applications for iOS and Android platforms."
+    },
+    "saas": {
+      "title": "SaaS Development",
+      "description": "Scalable Software-as-a-Service solutions with cloud-native architecture."
     }
   },
-  "about": {
-    "title": "About Groww Internationals",
-    "subtitle": "Your trusted partner in quality exports",
-    "mission": "Delivering excellence in every product we export",
-    "experience": "15+ Years Experience",
-    "countries": "25+ Countries Served",
-    "products": "50+ Products",
-    "certifications": "ISO Certified"
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Showcasing our latest work and innovations",
+    "project1": {
+      "title": "E-Commerce Platform",
+      "description": "Full-stack e-commerce solution with payment integration"
+    },
+    "project2": {
+      "title": "Healthcare Management",
+      "description": "Comprehensive patient management system for hospitals"
+    },
+    "project3": {
+      "title": "Finance Dashboard",
+      "description": "Real-time financial analytics and reporting platform"
+    }
   },
   "contact": {
-    "title": "Get in Touch",
-    "subtitle": "Ready to start your export journey with us?",
+    "title": "Get In Touch",
+    "subtitle": "Ready to start your next project with us?",
     "form": {
       "name": "Full Name",
       "email": "Email Address",
-      "phone": "Phone Number",
-      "product": "Product Interest",
-      "message": "Message",
+      "message": "Project Description",
+      "products": "Services Needed",
+      "quantity": "Project Budget (USD)",
       "submit": "Send Message"
     },
     "info": {
       "address": "Mumbai, Maharashtra, India",
       "phone": "+91 95293 90430",
-      "email": "info@growwinternational.com"
+      "email": "info@techcompany.com"
     }
   },
   "footer": {
-    "company": "Groww Internationals",
-    "description": "Leading exporter of premium Indian agricultural and traditional products",
+    "company": "TechSolutions",
+    "description": "Leading software development company creating innovative digital solutions",
     "quickLinks": "Quick Links",
-    "ourProducts": "Our Products",
-    "contactInfo": "Contact Info",
+    "ourServices": "Our Services",
+    "contactInfo": "Contact Information",
     "followUs": "Follow Us",
-    "copyright": "© 2024 Groww Internationals. All rights reserved.",
+    "copyright": "© 2024 TechSolutions. All rights reserved.",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "exportTerms": "Export Terms"
+    "terms": "Terms of Service"
   },
   "language": "Language"
 }
