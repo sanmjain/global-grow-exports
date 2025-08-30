@@ -1,9 +1,30 @@
-import { Card } from "@/components/ui/card";
-import { Shield, Globe, Award, Truck, Heart, CheckCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Shield, Award, Globe, Clock, Truck, Users, Heart, CheckCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const AboutSection = () => {
   const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('about');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   
   const features = [
     {

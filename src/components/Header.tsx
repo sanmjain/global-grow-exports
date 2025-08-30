@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { MessageCircle, Menu } from "lucide-react";
 import { useState } from "react";
+import { Menu, X, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ const Header = () => {
     { name: t('nav.contact'), href: "#contact" },
   ];
 
-  const whatsappNumber = "+919529390430";
+  const whatsappNumber = "+917350072855";
   const whatsappMessage = "Hello! I'm interested in your export services.";
 
   return (

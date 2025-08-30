@@ -1,55 +1,87 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-agriculture.jpg";
+import FloatingIcons from "./FloatingIcons";
 
 const Hero = () => {
   const { t } = useTranslation();
-  const whatsappNumber = "+919529390430";
+  const whatsappNumber = "+917350072855";
   const whatsappMessage = "Hello! I'm interested in your export services and would like to request a quote.";
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <motion.div 
+        className="absolute inset-0 z-0"
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 8, ease: "easeOut" }}
+      >
         <img 
           src={heroImage} 
           alt="Agricultural exports and shipping" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/40"></div>
-      </div>
+      </motion.div>
+
+      {/* Floating Icons */}
+      <FloatingIcons />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight">
+          <motion.h1 
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             {t('hero.title')}
-          </h1>
+          </motion.h1>
           
-          <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <motion.p 
+            className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 leading-relaxed max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
             {t('hero.subtitle')}
-          </p>
+          </motion.p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              variant="hero" 
-              size="lg"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <FileText className="h-5 w-5" />
-              {t('hero.cta')}
-              <ArrowRight className="h-5 w-5" />
-            </Button>
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <FileText className="h-5 w-5" />
+                {t('hero.cta')}
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </motion.div>
             
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank')}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
             >
-              <MessageCircle className="h-5 w-5" />
-              {t('hero.whatsapp')}
-            </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank')}
+              >
+                <MessageCircle className="h-5 w-5" />
+                {t('hero.whatsapp')}
+              </Button>
+            </motion.div>
           </div>
 
           {/* Trust Indicators */}

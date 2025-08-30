@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ArrowRight } from "lucide-react";
+import { useState } from "react";
 import riceImage from "@/assets/rice-product.jpg";
 import coffeeImage from "@/assets/coffee-product.jpg";
 import spicesImage from "@/assets/spices-product.jpg";
@@ -11,6 +13,7 @@ import medicinesImage from "@/assets/medicines-product.jpg";
 
 const ProductsSection = () => {
   const { t } = useTranslation();
+  const [expandedProduct, setExpandedProduct] = useState<number | null>(null);
   
   const products = [
     {

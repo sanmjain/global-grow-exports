@@ -1,5 +1,6 @@
-import { MessageCircle, Mail, Phone, MapPin, Globe } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, MessageCircle, Mail, Phone, MapPin, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const { t } = useTranslation();
